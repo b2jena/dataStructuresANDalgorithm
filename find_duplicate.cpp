@@ -34,6 +34,21 @@ int findDuplicate(int *arr, int n){
     return (sumarr-sumn2);
 }
 
+/*
+{
+    int i,j;
+    for(i=0;i<n;i++){
+        for(j=i+1;j<n;j++){
+        	if(arr[i]==arr[j]){			//another approach with O(n^2) time complexity
+                return arr[i];
+            }
+        }
+    }
+    return 0;
+        //Write your code here
+}
+*/
+
 int main()
 {
 	int t;
