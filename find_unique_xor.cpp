@@ -20,13 +20,13 @@ a | b | a ^ b
 */
 
 int findUnique(int *arr, int n) {
-	// Do XOR of all elements and return
-        int res = arr[0];
-        for (int i = 1; i < n; i++)
-        {
-            res = res ^ arr[i];
-        }
-        return res;
+    // Do XOR of all elements and return
+    int res = arr[0];
+    for (int i = 1; i < n; i++)
+    {
+        res = res ^ arr[i];
+    }
+    return res;
 }
 
 int main() {

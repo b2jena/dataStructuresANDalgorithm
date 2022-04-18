@@ -49,19 +49,19 @@ using namespace std;
 
 int helper(int **input, int m, int n, int i, int j)
 {
-    if(i>=m || j>=m){
-        return INT_MAX;
-    }else if(i==m-1 && j==n-1){
-        return input[i][j];
-    }
-    int downcost = helper(input,m,n,i+1,j);
-    int diagonalcost = helper(input,m,n,i+1,j+1);
-    int rightcost = helper(input,m,n,i,j+1);
-    return input[i][j]+min(downcost,min(diagonalcost,rightcost));
+	if (i >= m || j >= m) {
+		return INT_MAX;
+	} else if (i == m - 1 && j == n - 1) {
+		return input[i][j];
+	}
+	int downcost = helper(input, m, n, i + 1, j);
+	int diagonalcost = helper(input, m, n, i + 1, j + 1);
+	int rightcost = helper(input, m, n, i, j + 1);
+	return input[i][j] + min(downcost, min(diagonalcost, rightcost));
 }
 int minCostPath(int **input, int m, int n)
 {
-    return helper(input,m,n,0,0);
+	return helper(input, m, n, 0, 0);
 }
 
 int main()

@@ -6,7 +6,7 @@ using namespace std;
 
 template <typename T>
 class TreeNode {
-   public:
+public:
     T data;
     vector<TreeNode<T>*> children;
 
@@ -45,29 +45,29 @@ TreeNode<int>* takeInputLevelWise() {
     return root;
 }
 
-void helper(TreeNode<int>* root, TreeNode<int>** first, TreeNode<int>** second){
-    if(root==NULL){
+void helper(TreeNode<int>* root, TreeNode<int>** first, TreeNode<int>** second) {
+    if (root == NULL) {
         return;
     }
-    if(!(*first)){
+    if (!(*first)) {
         *first = root;
     }
-    else if(root->data>(*first)->data){
-        *second=*first;
-        *first=root;
+    else if (root->data > (*first)->data) {
+        *second = *first;
+        *first = root;
     }
-    for(int i=0;i<root->children.size();i++){
-        helper(root->children[i],first,second);
+    for (int i = 0; i < root->children.size(); i++) {
+        helper(root->children[i], first, second);
     }
-    
+
 }
 TreeNode<int>* getSecondLargestNode(TreeNode<int>* root) {
-    
+
     TreeNode<int>* first = root;
     TreeNode<int>* second = NULL;
-    
-    helper(root,&first,&second);
-    if(second==NULL){
+
+    helper(root, &first, &second);
+    if (second == NULL) {
         return NULL;
     }
     return second;

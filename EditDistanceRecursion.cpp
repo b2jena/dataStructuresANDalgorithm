@@ -29,10 +29,10 @@ using namespace std;
 // Utility function to find minimum of three numbers
 int min(int x, int y, int z) { return min(min(x, y), z); }
 
-int helper(string str1, string str2, int m, int n){
-    if(m==0)
+int helper(string str1, string str2, int m, int n) {
+    if (m == 0)
         return n;
-    if(n==0)
+    if (n == 0)
         return m;
     // If last characters of two strings are same, nothing
     // much to do. Ignore last characters and get count for
@@ -46,11 +46,11 @@ int helper(string str1, string str2, int m, int n){
     return 1 + min(helper(str1, str2, m, n - 1) /* Insert*/, helper(str1, str2, m - 1, n) /* Remove*/, helper(str1, str2, m - 1, n - 1) /*Replace*/ );
 }
 int editDistance(string s1, string s2) {
-    int l1=s1.length();
-    int l2=s2.length();
-	int out=helper(s1,s2,l1,l2);
+    int l1 = s1.length();
+    int l2 = s2.length();
+    int out = helper(s1, s2, l1, l2);
     return out;
-	// Write your code here
+    // Write your code here
 }
 
 int main() {

@@ -40,25 +40,29 @@ using ull = unsigned long long;
 const int MAX_N = 1e5 + 1;
 const double PI = acos(-1.0);
 
-template<typename T> T gcd(T a, T b){return(b?__gcd(a,b):a);}
-template<typename T> T lcm(T a, T b){return(a*(b/gcd(a,b)));}
+template<typename T> T gcd(T a, T b) {return (b ? __gcd(a, b) : a);}
+template<typename T> T lcm(T a, T b) {return (a * (b / gcd(a, b)));}
 
-int add(int a, int b, int c){int res=a+b;return(res>=c?res-c:res);}
+int add(int a, int b, int c) {int res = a + b; return (res >= c ? res - c : res);}
 
-int mod_neg(int a, int b, int c){int res;if(abs(a-b)<c)res=a-b;else res=(a-b)%c;return(res<0?res+c:res);}
+int mod_neg(int a, int b, int c) {int res; if (abs(a - b) < c)res = a - b; else res = (a - b) % c; return (res < 0 ? res + c : res);}
 
-int mul(int a, int b, int c){ll res=(ll)a*b;return(res>=c?res%c:res);}
+int mul(int a, int b, int c) {ll res = (ll)a * b; return (res >= c ? res % c : res);}
 
-ll mulmod(ll a,ll b, ll m){ll q = (ll)(((ld)a*(ld)b)/(ld)m);ll r=a*b-q*m;if(r>m)r%=m;if(r<0)r+=m;return r;}
+ll mulmod(ll a, ll b, ll m) {ll q = (ll)(((ld)a * (ld)b) / (ld)m); ll r = a * b - q * m; if (r > m)r %= m; if (r < 0)r += m; return r;}
 
-template<typename T>T expo(T e, T n){T x=1,p=e;while(n){if(n&1)x=x*p;p=p*p;n>>=1;}return x;}
+template<typename T>T expo(T e, T n) {T x = 1, p = e; while (n) {if (n & 1)x = x * p; p = p * p; n >>= 1;} return x;}
 
-template<typename T>T power(T e, T n, T m){T x=1,p=e;while(n){if(n&1)x=mul(x,p,m);p=mul(p,p,m);n>>=1;}return x;}
+template<typename T>T power(T e, T n, T m) {T x = 1, p = e; while (n) {if (n & 1)x = mul(x, p, m); p = mul(p, p, m); n >>= 1;} return x;}
 
-template<typename T>T extended_euclid(T a, T b, T &x, T &y){T xx=0,yy=1;y=0;x=1;while(b){T q=a/b,t=b;b=a%b;a=t;\
-t=xx;xx=x-q*xx;x=t;t=yy;yy=y-q*yy;y=t;}return a;}
+template<typename T>T extended_euclid(T a, T b, T &x, T &y) {
+    T xx = 0, yy = 1; y = 0; x = 1; while (b) {
+        T q = a / b, t = b; b = a % b; a = t; \
+        t = xx; xx = x - q * xx; x = t; t = yy; yy = y - q * yy; y = t;
+    } return a;
+}
 
-template<typename T>T mod_inverse(T a, T n){T x,y,z=0;T d=extended_euclid(a,n,x,y);return(d>1?-1:mod_neg(x,z,n));}
+template<typename T>T mod_inverse(T a, T n) {T x, y, z = 0; T d = extended_euclid(a, n, x, y); return (d > 1 ? -1 : mod_neg(x, z, n));}
 
 //brute- force approach O(2^n)
 
@@ -66,21 +70,21 @@ template<typename T>T mod_inverse(T a, T n){T x,y,z=0;T d=extended_euclid(a,n,x,
 int longestIncreasingSubsequence(int* arr, int n) {
     int * output = new int[n];
     output[0] = 1;
-    for(int i = 1; i < n; i++){
+    for (int i = 1; i < n; i++) {
         output[i] = 1;
-        for(int j = i-1; j >= 0; j--){  //traverse from the (i-1)th element to 0th index
-            if(arr[j] >= arr[i]){
+        for (int j = i - 1; j >= 0; j--) { //traverse from the (i-1)th element to 0th index
+            if (arr[j] >= arr[i]) {
                 continue;  //skip
             }
             int possibleAns = output[j] + 1;
-            if(possibleAns > output[i]){
+            if (possibleAns > output[i]) {
                 output[i] = possibleAns;
             }
         }
     }
     int best = 0;
-    for(int i = 0; i < n; i++){
-        if(best < output[i]){
+    for (int i = 0; i < n; i++) {
+        if (best < output[i]) {
             best = output[i];
         }
     }

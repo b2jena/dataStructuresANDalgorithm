@@ -39,16 +39,16 @@ using namespace std;
 
 int knapsack(int *weights, int *values, int n, int maxWeight)
 {
-    if(n==0 || maxWeight==0){
-        return 0;
-    }
-    if(weights[n-1] > maxWeight){
-        return knapsack(weights, values, n-1, maxWeight);
-    }else{
-        int x=knapsack(weights,values, n-1, maxWeight-weights[n-1])+values[n-1];
-        int y=knapsack(weights, values, n-1, maxWeight);
-        return max(x,y);
-    }
+	if (n == 0 || maxWeight == 0) {
+		return 0;
+	}
+	if (weights[n - 1] > maxWeight) {
+		return knapsack(weights, values, n - 1, maxWeight);
+	} else {
+		int x = knapsack(weights, values, n - 1, maxWeight - weights[n - 1]) + values[n - 1];
+		int y = knapsack(weights, values, n - 1, maxWeight);
+		return max(x, y);
+	}
 	//write your code here
 }
 

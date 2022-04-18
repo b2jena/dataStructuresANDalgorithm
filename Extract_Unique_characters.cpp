@@ -41,26 +41,26 @@ using namespace std;
 //         }
 //         return st;
 //     }
-// 	// Write your code here
+//  // Write your code here
 // }
 
 
 
-string uniqueChar(string str){
-    unordered_map<char,int> hash ;
+string uniqueChar(string str) {
+    unordered_map<char, int> hash ;
     string ans ;
-    
-    for(int i = 0 ; str[i]!='\0' ; i++){
-        if(hash.count(str[i]))
+
+    for (int i = 0 ; str[i] != '\0' ; i++) {
+        if (hash.count(str[i]))
             continue ;
         ans = ans + str[i];
         hash[str[i]]++ ;
     }
-    
-    return ans ;  
+
+    return ans ;
 }
 //hash.count(str[i]) will check if hash table has a key with value str[i]
-//and return true or false 
+//and return true or false
 //if it was already contained in the string then I continued :)
 //else If it wasnt added to hashmaps yet, I will add it, then add it to my answer string
 

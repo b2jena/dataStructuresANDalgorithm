@@ -33,16 +33,16 @@ Sample Output 2 :
 #include <iostream>
 using namespace std;
 
-int countWaysToMakeChange(int denominations[], int numDenominations, int value){
-    //numDenominations =  size of denominations array
-    int dp[value+1] = {0};
-    dp[0]=1;
-    for(int i=0;i<numDenominations;i++){
-        for(int j=denominations[i];j<=value;j++){
-            dp[j]+=dp[j-denominations[i]];
-        }
-    }
-    return dp[value];
+int countWaysToMakeChange(int denominations[], int numDenominations, int value) {
+	//numDenominations =  size of denominations array
+	int dp[value + 1] = {0};
+	dp[0] = 1;
+	for (int i = 0; i < numDenominations; i++) {
+		for (int j = denominations[i]; j <= value; j++) {
+			dp[j] += dp[j - denominations[i]];
+		}
+	}
+	return dp[value];
 }
 
 int main()
