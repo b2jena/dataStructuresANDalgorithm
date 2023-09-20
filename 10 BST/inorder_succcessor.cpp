@@ -1,4 +1,4 @@
-//BST to Linked List
+// BST to Linked List
 #include <iostream>
 using namespace std;
 
@@ -9,79 +9,88 @@ public:
 	Node *left;
 	Node *right;
 
-	Node(int key) {
+	Node(int key)
+	{
 		this->key = key;
-		left = right  = NULL;
+		left = right = NULL;
 	}
 };
 
-Node* insert(Node * root, int key) {
-	if (root == NULL) {
+Node *insert(Node *root, int key)
+{
+	if (root == NULL)
+	{
 		return new Node(key);
 	}
 
-	//rec case
-	if (key < root->key) {
+	// rec case
+	if (key < root->key)
+	{
 		root->left = insert(root->left, key);
 	}
-	else {
+	else
+	{
 		root->right = insert(root->right, key);
 	}
 	return root;
-
 }
 
-
-
-void printInOrder(Node *root) {
-	if (root == NULL) {
+void printInOrder(Node *root)
+{
+	if (root == NULL)
+	{
 		return;
 	}
-	//left, root, right
+	// left, root, right
 	printInOrder(root->left);
-	cout << root-> key << " ,";
+	cout << root->key << " ,";
 	printInOrder(root->right);
 }
 
-
 //---------Next Inorder Successor
 
-Node * inorderSucc(Node * root, Node * target) {
+Node *inorderSucc(Node *root, Node *target)
+{
 
 	// If Right Subtree
-	if (target->right != NULL) {
-		Node* temp = target->right;
-		while (temp->left != NULL) {
+	if (target->right != NULL)
+	{
+		Node *temp = target->right;
+		while (temp->left != NULL)
+		{
 			temp = temp->left;
 		}
 		return temp;
 	}
 
-
 	// Otherwise
-	Node * temp = root;
-	Node * succ = NULL;
+	Node *temp = root;
+	Node *succ = NULL;
 
-	while (temp != NULL) {
+	while (temp != NULL)
+	{
 
-		if (temp->key > target->key) {
+		if (temp->key > target->key)
+		{
 			succ = temp;
 			temp = temp->left;
 		}
-		else if (temp->key < target->key ) {
+		else if (temp->key < target->key)
+		{
 			temp = temp->right;
 		}
-		else {
+		else
+		{
 			break;
 		}
 	}
 	return succ;
 }
 
+int main()
+{
 
-int main() {
-
-	Node * root = NULL;
+	Node *root = NULL;
 	root = insert(root, 8);
 	root = insert(root, 3);
 	root = insert(root, 10);
@@ -92,14 +101,12 @@ int main() {
 	root = insert(root, 7);
 	root = insert(root, 13);
 
-	//Test our Code
-	Node* t1 = root->left->right->right;
-	Node* t2 = root->right;
+	// Test our Code
+	Node *t1 = root->left->right->right;
+	Node *t2 = root->right;
 
 	cout << "Inorder succ of 7 is" << inorderSucc(root, t1)->key << endl;
 	cout << "Inorder succ of 10 is" << inorderSucc(root, t2)->key << endl;
-
-
 
 	return 0;
 }

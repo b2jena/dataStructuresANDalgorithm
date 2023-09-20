@@ -1,14 +1,12 @@
-#include<iostream>
+#include <iostream>
 using namespace std;
 
-
-void permute(string a, int i) {
-
-
+void permute(string a, int i)
+{
 }
 
-
-int main() {
+int main()
+{
 
 	string s;
 	cin >> s;

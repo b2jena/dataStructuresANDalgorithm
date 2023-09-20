@@ -1,30 +1,37 @@
-#include<iostream>
-#include<string>
-#include<stack>
+#include <iostream>
+#include <string>
+#include <stack>
 using namespace std;
 
-bool checkRedundant(string str) {
-	//Complete
+bool checkRedundant(string str)
+{
+	// Complete
 	stack<char> s;
 
-	for (char ch : str) {
-		if (ch != ')') {
+	for (char ch : str)
+	{
+		if (ch != ')')
+		{
 			s.push(ch); // a,b, + , - , ( ....
 		}
-		else {
+		else
+		{
 			// ')'
 			bool operator_found = false;
 
-			while (!s.empty() and s.top() != '(') {
+			while (!s.empty() and s.top() != '(')
+			{
 				char top = s.top();
-				if (top == '+' or top == '-' or top == '*' or top == '/') {
+				if (top == '+' or top == '-' or top == '*' or top == '/')
+				{
 					operator_found = true;
 				}
 				s.pop();
 			}
-			s.pop(); //pop the opening bracked after the loop if over
+			s.pop(); // pop the opening bracked after the loop if over
 
-			if (operator_found == false) {
+			if (operator_found == false)
+			{
 				return true;
 			}
 		}
@@ -32,13 +39,15 @@ bool checkRedundant(string str) {
 	return false;
 }
 
-
-int main() {
+int main()
+{
 	string str = "((a+b)+c) + ((d*e))";
-	if (checkRedundant(str)) {
+	if (checkRedundant(str))
+	{
 		cout << "Contains Redundant Parenthesis";
 	}
-	else {
+	else
+	{
 		cout << "r";
 	}
 	return 0;

@@ -1,65 +1,79 @@
-#include<iostream>
-#include<stack>
-#include<string>
+#include <iostream>
+#include <stack>
+#include <string>
 using namespace std;
 
-
-bool isBalanced(string input) {
-	//Todo: Complete this method
+bool isBalanced(string input)
+{
+	// Todo: Complete this method
 
 	stack<char> s;
-	for (auto ch : input) {
+	for (auto ch : input)
+	{
 
-		switch (ch) {
+		switch (ch)
+		{
 		case '(':
 		case '[':
-		case '{': s.push(ch);
+		case '{':
+			s.push(ch);
 			break;
 
-		case ')': if (!s.empty() and s.top() == '(') {
+		case ')':
+			if (!s.empty() and s.top() == '(')
+			{
 				s.pop();
 			}
-			else {
+			else
+			{
 				return false;
 			}
 			break;
 
-		case ']': if (!s.empty() and s.top() == '[') {
+		case ']':
+			if (!s.empty() and s.top() == '[')
+			{
 				s.pop();
 			}
-			else {
+			else
+			{
 				return false;
 			}
 			break;
 
-		case '}': if (!s.empty() and s.top() == '{') {
+		case '}':
+			if (!s.empty() and s.top() == '{')
+			{
 				s.pop();
 			}
-			else {
+			else
+			{
 				return false;
 			}
 			break;
-		default : continue;
+		default:
+			continue;
 		}
 	}
 
-	if (s.empty() == true) {
+	if (s.empty() == true)
+	{
 		return true;
 	}
 	return false;
 }
 
+int main()
+{
+	string s = "{ a + (b+c) + ([d+e]*f)) } + k`"; //{ a + (b+c) + ([d+e]*f)) } + k";
 
-
-int main() {
-	string s = "{ a + (b+c) + ([d+e]*f)) } + k`";//{ a + (b+c) + ([d+e]*f)) } + k";
-
-	if (isBalanced(s)) {
+	if (isBalanced(s))
+	{
 		cout << "Balanced!" << endl;
 	}
-	else {
+	else
+	{
 		cout << "Not Balanced " << endl;
-
 	}
 	return 0;
 }

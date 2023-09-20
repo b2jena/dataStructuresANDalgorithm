@@ -1,15 +1,13 @@
-#include<iostream>
-#include<queue>
+#include <iostream>
+#include <queue>
 using namespace std;
 
+// Running Median Heaps
+int main()
+{
 
-//Running Median Heaps
-int main() {
-
-
-
-	priority_queue<int> leftheap; //maxheap
-	priority_queue<int, vector<int>, greater<int> > rightheap; //min heap
+	priority_queue<int> leftheap;							  // maxheap
+	priority_queue<int, vector<int>, greater<int>> rightheap; // min heap
 
 	int d;
 	cin >> d;
@@ -19,48 +17,54 @@ int main() {
 	cout << med << " ";
 
 	cin >> d;
-	while (d != -1) {
-		//left or right or equal
-		if (leftheap.size() > rightheap.size()) {
-			if (d < med) {
+	while (d != -1)
+	{
+		// left or right or equal
+		if (leftheap.size() > rightheap.size())
+		{
+			if (d < med)
+			{
 				rightheap.push(leftheap.top());
 				leftheap.pop();
 				leftheap.push(d);
 			}
-			else {
+			else
+			{
 				rightheap.push(d);
 			}
 			med = (leftheap.top() + rightheap.top()) / 2.0;
 		}
-		else if (leftheap.size() == rightheap.size()) {
-			if (d < med) {
+		else if (leftheap.size() == rightheap.size())
+		{
+			if (d < med)
+			{
 				leftheap.push(d);
 				med = leftheap.top();
 			}
-			else {
+			else
+			{
 				rightheap.push(d);
 				med = rightheap.top();
 			}
-
 		}
-		else {
-			if (d < med) {
+		else
+		{
+			if (d < med)
+			{
 				leftheap.push(d);
 			}
-			else {
+			else
+			{
 				leftheap.push(rightheap.top());
 				rightheap.pop();
 				rightheap.push(d);
 			}
 			med = (leftheap.top() + rightheap.top()) / 2;
-
 		}
 
 		cout << med << " ";
 		cin >> d;
 	}
-
-
 
 	return 0;
 }

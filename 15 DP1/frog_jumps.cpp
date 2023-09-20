@@ -7,5 +7,3 @@
 // maximum number of steps frog can take in the array.
 // Write a function which can calculates the minimum jumps
 // required by frog to reach the end of the array.
-
-
