@@ -1,19 +1,19 @@
-#include<iostream>
-#include<vector>
-#include<cstring>
+#include <iostream>
+#include <vector>
+#include <cstring>
 using namespace std;
 
-
-int main() {
+int main()
+{
 
     char input[1000];
     cin.getline(input, 1000);
 
-    //strtok()
-    char *token =  strtok(input, " ");
+    // strtok()
+    char *token = strtok(input, " ");
 
-
-    while (token != NULL) {
+    while (token != NULL)
+    {
         cout << token << endl;
         token = strtok(NULL, " ");
     }

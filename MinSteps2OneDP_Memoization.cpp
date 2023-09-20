@@ -34,18 +34,22 @@ Step 3 : n = 2 / 2 = 1
 #include <bits/stdc++.h>
 using namespace std;
 
-
-int countStepsToOne(int n) {
-    int* ans = new int[n + 1];
+int countStepsToOne(int n)
+{
+    int *ans = new int[n + 1];
     ans[0] = 0;
     ans[1] = 0;
 
-    for (int i = 2; i <= n; i++) {
+    for (int i = 2; i <= n; i++)
+    {
         int x = ans[i - 1];
         int y = INT_MAX, z = INT_MAX;
-        if (i % 2 == 0) {
+        if (i % 2 == 0)
+        {
             y = ans[i / 2];
-        } if (i % 3 == 0) {
+        }
+        if (i % 3 == 0)
+        {
             z = ans[i / 3];
         }
         ans[i] = 1 + min(x, min(y, z));

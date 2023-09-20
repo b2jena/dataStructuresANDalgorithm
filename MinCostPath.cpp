@@ -49,9 +49,12 @@ using namespace std;
 
 int helper(int **input, int m, int n, int i, int j)
 {
-	if (i >= m || j >= m) {
+	if (i >= m || j >= m)
+	{
 		return INT_MAX;
-	} else if (i == m - 1 && j == n - 1) {
+	}
+	else if (i == m - 1 && j == n - 1)
+	{
 		return input[i][j];
 	}
 	int downcost = helper(input, m, n, i + 1, j);

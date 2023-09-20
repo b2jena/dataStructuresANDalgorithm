@@ -1,44 +1,47 @@
-#include<iostream>
-#include<list>
+#include <iostream>
+#include <list>
 using namespace std;
 
-
-class Graph {
+class Graph
+{
 
 	int V;
 	list<int> *l;
 
 public:
-	Graph(int v) {
+	Graph(int v)
+	{
 		V = v;
 		l = new list<int>[V];
 	}
 
-	void addEdge(int i, int j, bool undir = true) {
+	void addEdge(int i, int j, bool undir = true)
+	{
 		l[i].push_back(j);
-		if (undir) {
+		if (undir)
+		{
 			l[j].push_back(i);
 		}
 	}
 
-	void printAdjList() {
-		//Iterate over all the rows
-		for (int i = 0; i < V; i++) {
+	void printAdjList()
+	{
+		// Iterate over all the rows
+		for (int i = 0; i < V; i++)
+		{
 			cout << i << "-->";
-			//every element of ith linked list
-			for (auto node : l[i]) {
+			// every element of ith linked list
+			for (auto node : l[i])
+			{
 				cout << node << ",";
 			}
 			cout << endl;
-
 		}
-
-
 	}
-
 };
 
-int main() {
+int main()
+{
 	Graph g(6);
 	g.addEdge(0, 1);
 	g.addEdge(0, 4);
@@ -50,11 +53,3 @@ int main() {
 	g.printAdjList();
 	return 0;
 }
-
-
-
-
-
-
-
-

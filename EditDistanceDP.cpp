@@ -35,8 +35,10 @@ int editDistance(string s1, string s2)
     int l1 = s1.length();
     int l2 = s2.length();
     int dp[l1 + 1][l2 + 1];
-    for (int i = 0; i <= l1; i++) {
-        for (int j = 0; j <= l2; j++) {
+    for (int i = 0; i <= l1; i++)
+    {
+        for (int j = 0; j <= l2; j++)
+        {
             // If first string is empty, only option is to
             // insert all characters of second string
             if (i == 0)
@@ -46,9 +48,12 @@ int editDistance(string s1, string s2)
             // remove all characters of second string
             else if (j == 0)
                 dp[i][j] = i; // Min. operations = i
-            else if (s1[i - 1] == s2[j - 1]) {
+            else if (s1[i - 1] == s2[j - 1])
+            {
                 dp[i][j] = dp[i - 1][j - 1];
-            } else {
+            }
+            else
+            {
                 dp[i][j] = 1 + min(dp[i][j - 1], dp[i - 1][j], dp[i - 1][j - 1]);
             }
         }
@@ -56,7 +61,8 @@ int editDistance(string s1, string s2)
     return dp[l1][l2];
 }
 
-int main() {
+int main()
+{
     string s1;
     string s2;
 

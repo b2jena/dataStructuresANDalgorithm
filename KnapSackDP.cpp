@@ -38,15 +38,23 @@ Sample Output 2 :
 #include <iostream>
 using namespace std;
 
-int knapsack(int* weight, int* value, int n, int maxWeight) {
+int knapsack(int *weight, int *value, int n, int maxWeight)
+{
     int dp[n + 1][maxWeight + 1];
-    for (int i = 0; i <= n; i++) {
-        for (int j = 0; j <= maxWeight; j++) {
-            if (i == 0 || j == 0) {
+    for (int i = 0; i <= n; i++)
+    {
+        for (int j = 0; j <= maxWeight; j++)
+        {
+            if (i == 0 || j == 0)
+            {
                 dp[i][j] = 0;
-            } else if (weight[i - 1] <= j) {
+            }
+            else if (weight[i - 1] <= j)
+            {
                 dp[i][j] = max(value[i - 1] + dp[i - 1][j - weight[i - 1]], dp[i - 1][j]);
-            } else {
+            }
+            else
+            {
                 dp[i][j] = dp[i - 1][j];
             }
         }
@@ -55,18 +63,20 @@ int knapsack(int* weight, int* value, int n, int maxWeight) {
     // Write your code here
 }
 
-
-int main() {
+int main()
+{
     int n;
     cin >> n;
-    int* wt = new int[n];
-    int* val = new int[n];
+    int *wt = new int[n];
+    int *val = new int[n];
 
-    for (int i = 0; i < n; i++) {
+    for (int i = 0; i < n; i++)
+    {
         cin >> wt[i];
     }
 
-    for (int j = 0; j < n; j++) {
+    for (int j = 0; j < n; j++)
+    {
         cin >> val[j];
     }
 

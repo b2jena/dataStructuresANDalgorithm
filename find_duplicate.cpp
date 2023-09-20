@@ -23,12 +23,15 @@ Time Limit: 1 sec
 #include <iostream>
 using namespace std;
 int findDuplicate(int *, int);
-int findDuplicate(int *arr, int n) {
+int findDuplicate(int *arr, int n)
+{
 	int i, sumarr = 0, sumn2 = 0;
-	for (i = 0; i < n; i++) {
+	for (i = 0; i < n; i++)
+	{
 		sumarr = sumarr + arr[i];
 	}
-	for (i = 0; i <= (n - 2); i++) {
+	for (i = 0; i <= (n - 2); i++)
+	{
 		sumn2 = sumn2 + i;
 	}
 	return (sumarr - sumn2);
@@ -36,16 +39,16 @@ int findDuplicate(int *arr, int n) {
 
 /*
 {
-    int i,j;
-    for(i=0;i<n;i++){
-        for(j=i+1;j<n;j++){
-        	if(arr[i]==arr[j]){			//another approach with O(n^2) time complexity
-                return arr[i];
-            }
-        }
-    }
-    return 0;
-        //Write your code here
+	int i,j;
+	for(i=0;i<n;i++){
+		for(j=i+1;j<n;j++){
+			if(arr[i]==arr[j]){			//another approach with O(n^2) time complexity
+				return arr[i];
+			}
+		}
+	}
+	return 0;
+		//Write your code here
 }
 */
 

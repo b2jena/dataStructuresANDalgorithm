@@ -21,17 +21,18 @@ Sample Output 2:
 315
 */
 
-
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
 
 #define mod 1000000007
 
-int balancedBTs(int n) {
-    int* dp = new int[n + 1];
+int balancedBTs(int n)
+{
+    int *dp = new int[n + 1];
     dp[0] = 1;
     dp[1] = 1;
-    for (int i = 2; i <= n; i++) {
+    for (int i = 2; i <= n; i++)
+    {
         dp[i] = (int)((long)(dp[i - 1]) * ((2 * (long)(dp[i - 2]) + dp[i - 1]) % mod) % mod);
     }
     int result = (dp[n] % mod);
@@ -40,7 +41,8 @@ int balancedBTs(int n) {
     // Write your code here
 }
 
-int main() {
+int main()
+{
     int n;
     cin >> n;
     cout << balancedBTs(n);

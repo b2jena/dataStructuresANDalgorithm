@@ -1,78 +1,90 @@
-#include<iostream>
-#include<queue>
-#include<vector>
-#include<map>
+#include <iostream>
+#include <queue>
+#include <vector>
+#include <map>
 using namespace std;
 
-class node {
+class node
+{
 
 public:
 	int data;
-	node*left;
-	node*right;
+	node *left;
+	node *right;
 
-	node(int d) {
+	node(int d)
+	{
 		data = d;
 		left = NULL;
 		right = NULL;
 	}
 };
 
-//Input : 1 2 4 -1 -1 5 7 -1 -1 -1 3 -1 6 -1 -1
-node* buildTree() {
+// Input : 1 2 4 -1 -1 5 7 -1 -1 -1 3 -1 6 -1 -1
+node *buildTree()
+{
 
 	int d;
 	cin >> d;
 
-	if (d == -1) {
+	if (d == -1)
+	{
 		return NULL;
 	}
 
-	node* n = new node(d);
+	node *n = new node(d);
 	n->left = buildTree();
 	n->right = buildTree();
 
 	return n;
 }
 
-void levelOrderPrint(node*root) {
+void levelOrderPrint(node *root)
+{
 
-	queue<node*> q;
+	queue<node *> q;
 	q.push(root);
 	q.push(NULL);
 
-	while (!q.empty()) {
-		node* temp = q.front();
-		if (temp == NULL) {
+	while (!q.empty())
+	{
+		node *temp = q.front();
+		if (temp == NULL)
+		{
 			cout << endl;
 			q.pop();
-			//insert a new null for the next level
-			if (!q.empty()) {
+			// insert a new null for the next level
+			if (!q.empty())
+			{
 				q.push(NULL);
 			}
 		}
-		else {
+		else
+		{
 			q.pop();
 			cout << temp->data << " ";
 
-			if (temp->left) {
+			if (temp->left)
+			{
 				q.push(temp->left);
 			}
-			if (temp->right) {
+			if (temp->right)
+			{
 				q.push(temp->right);
 			}
 		}
-
 	}
 	return;
 }
 //===============================
-//ToDo:  Complete this Function |
+// ToDo:  Complete this Function |
 //===============================
 
-//helper
-void traverseTree(node*root, int d, map<int, vector<int> > &m) {
-	if (root == NULL) {
+// helper
+void traverseTree(node *root, int d, map<int, vector<int>> &m)
+{
+	if (root == NULL)
+	{
 		return;
 	}
 
@@ -81,30 +93,33 @@ void traverseTree(node*root, int d, map<int, vector<int> > &m) {
 	traverseTree(root->right, d + 1, m);
 }
 
-void verticalOrderPrint(node* root) {
+void verticalOrderPrint(node *root)
+{
 
-	map<int, vector<int> > m;
+	map<int, vector<int>> m;
 	int d = 0;
 
 	traverseTree(root, d, m);
 
-	//Keys are sorted (-2, -1,0,1,2,3.....)
-	for (auto p : m) {
+	// Keys are sorted (-2, -1,0,1,2,3.....)
+	for (auto p : m)
+	{
 		int key = p.first;
 		vector<int> line = p.second;
 
-		for (auto data : line) {
+		for (auto data : line)
+		{
 			cout << data << " ";
 		}
 		cout << endl;
-
 	}
 	return;
 }
 
-int main() {
+int main()
+{
 
-	node* root = new node(1);
+	node *root = new node(1);
 	root->left = new node(2);
 	root->right = new node(3);
 	root->left->left = new node(4);
@@ -115,7 +130,6 @@ int main() {
 	root->right->right->right = new node(9);
 
 	verticalOrderPrint(root);
-
 
 	return 0;
 }

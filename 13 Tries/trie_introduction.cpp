@@ -1,38 +1,44 @@
-#include<iostream>
-#include<unordered_map>
+#include <iostream>
+#include <unordered_map>
 using namespace std;
 
-
-//Build a Prefix Tree - Trie
-class Node {
+// Build a Prefix Tree - Trie
+class Node
+{
 public:
 	char data;
-	unordered_map<char, Node*> m;
+	unordered_map<char, Node *> m;
 	bool isTerminal;
 
-	Node(char d) {
+	Node(char d)
+	{
 		data = d;
 		isTerminal = false;
 	}
 };
 
+class Trie
+{
 
-class Trie {
+	Node *root;
 
-	Node*root;
 public:
-	Trie() {
+	Trie()
+	{
 		root = new Node('\0');
 	}
 
-	//later
-	void insert(string word) {
+	// later
+	void insert(string word)
+	{
 
-		Node* temp = root;
+		Node *temp = root;
 
-		for (char ch : word) {
+		for (char ch : word)
+		{
 
-			if (temp->m.count(ch) == 0) {
+			if (temp->m.count(ch) == 0)
+			{
 				Node *n = new Node(ch);
 				temp->m[ch] = n;
 			}
@@ -40,34 +46,32 @@ public:
 		}
 
 		temp->isTerminal = true;
-
 	}
 
-	bool search(string word) {
+	bool search(string word)
+	{
 
-		Node*temp = root;
+		Node *temp = root;
 
-		for (char ch : word) {
+		for (char ch : word)
+		{
 
-			if (temp->m.count(ch) == 0) {
+			if (temp->m.count(ch) == 0)
+			{
 				return false;
 			}
 			temp = temp->m[ch];
-
-
 		}
 		return temp->isTerminal;
 	}
 };
 
-
-int main() {
+int main()
+{
 
 	string input = "this is a suffix trie";
 
 	string queries[] = "fix,"
 
-
-	                   return 0;
+		return 0;
 }
-

@@ -1,55 +1,60 @@
-#include<iostream>
-#include<list>
-#include<queue>
+#include <iostream>
+#include <list>
+#include <queue>
 using namespace std;
 
-
-class Graph {
+class Graph
+{
 
 	int V;
 	list<int> *l;
 
 public:
-	Graph(int v) {
+	Graph(int v)
+	{
 		V = v;
 		l = new list<int>[V];
 	}
 
-	void addEdge(int i, int j, bool undir = true) {
+	void addEdge(int i, int j, bool undir = true)
+	{
 		l[i].push_back(j);
-		if (undir) {
+		if (undir)
+		{
 			l[j].push_back(i);
 		}
 	}
-	void bfs(int source) {
+	void bfs(int source)
+	{
 
 		queue<int> q;
-		bool *visited = new bool[V] {0};
+		bool *visited = new bool[V]{0};
 
 		q.push(source);
 		visited[source] = true;
 
-		while (!q.empty()) {
-			//Do some work for every node
+		while (!q.empty())
+		{
+			// Do some work for every node
 			int f = q.front();
 			cout << f << endl;
 			q.pop();
 
-			//PUsh the nbrs of current node inside q if they are not already visited
-			for (auto nbr : l[f]) {
-				if (!visited[nbr]) {
+			// PUsh the nbrs of current node inside q if they are not already visited
+			for (auto nbr : l[f])
+			{
+				if (!visited[nbr])
+				{
 					q.push(nbr);
 					visited[nbr] = true;
 				}
 			}
 		}
 	}
-
-
-
 };
 
-int main() {
+int main()
+{
 	Graph g(7);
 	g.addEdge(0, 1);
 	g.addEdge(1, 2);
@@ -62,11 +67,3 @@ int main() {
 	g.bfs(1);
 	return 0;
 }
-
-
-
-
-
-
-
-
